@@ -25,8 +25,6 @@ Hawk = (function() {
       return result;
     }
     timestamp = options.timestamp || Math.floor((Date.now() + (options.localtimeOffsetMsec || 0)) / 1000);
-    console.log(parseUri(uri));
-    console.log(urlParse(uri));
     if (typeof uri === 'string') {
       uri = parseUri(uri);
     }
