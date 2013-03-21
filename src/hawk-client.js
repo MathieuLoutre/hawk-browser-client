@@ -25,16 +25,18 @@ Hawk = (function() {
       return result;
     }
     timestamp = options.timestamp || Math.floor((Date.now() + (options.localtimeOffsetMsec || 0)) / 1000);
+    console.log(parseUri(uri));
+    console.log(urlParse(uri));
     if (typeof uri === 'string') {
-      uri = urlParse(uri);
+      uri = parseUri(uri);
     }
     artifacts = {
       credentials: credentials,
       ts: timestamp,
       nonce: options.nonce || this.randomString(6),
       method: method,
-      resource: uri.pathname + (uri.search || ''),
-      host: uri.hostname,
+      resource: uri.relative,
+      host: uri.host,
       port: uri.port || (uri.protocol === 'http' ? 80 : 443),
       hash: options.hash,
       ext: options.ext,

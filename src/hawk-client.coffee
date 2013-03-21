@@ -22,9 +22,9 @@ class Hawk
 
 		# Application time
 		timestamp = options.timestamp or Math.floor((Date.now() + (options.localtimeOffsetMsec or 0)) / 1000)
-
+		
 		# Parse URI
-		uri = urlParse(uri) if typeof uri is 'string'
+		uri = parseUri(uri) if typeof uri is 'string'
 
 		# Calculate signature
 		artifacts =
@@ -32,8 +32,8 @@ class Hawk
 			ts: timestamp
 			nonce: options.nonce or this.randomString(6)
 			method: method
-			resource: uri.pathname + (uri.search or '') # Maintain trailing '?'
-			host: uri.hostname
+			resource: uri.relative
+			host: uri.host
 			port: uri.port or (if uri.protocol is 'http' then 80 else 443)
 			hash: options.hash
 			ext: options.ext
