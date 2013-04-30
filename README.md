@@ -1,6 +1,10 @@
 Hawk Browser Client
 ===================
 
+This project is not actively supported anymore. Hawk released a browser support and I focused my effort on contributing to the main repo.
+
+For legacy:
+
 Browser client for the Hawk Authentification scheme.
 
 At the time of writing, the client code provided by the Hawk authentification scheme (https://github.com/hueniverse/hawk) does not support browsers out of the box. The main reason being that it makes heavy use of Node's API and some other packages. It also makes use of an NTP server that would be really hard to reproduce. Given that the Hawk specifications mention that in case of a wrong timestamp, the server will provide one, this part can be occulted.
